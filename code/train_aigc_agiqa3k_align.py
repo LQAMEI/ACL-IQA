@@ -129,7 +129,7 @@ def train(model, best_result, best_epoch):
             total_loss = loss_m3(logits_quality, galign.detach()).mean() + moe_loss
             
             if logits_quality_col is not None:
-                # 协作的得分
+                # 协锟斤拷锟侥得凤拷
                 logits_quality_col = 1 * logits_quality_col[:, 0] + 2 * logits_quality_col[:, 1] + 3 * logits_quality_col[:, 2] + \
                                     4 * logits_quality_col[:, 3] + 5 * logits_quality_col[:, 4]
                 logits_quality_col = ((logits_quality_col -1) / 4) *5
@@ -137,7 +137,7 @@ def train(model, best_result, best_epoch):
             
             
             if logits_quality_adv is not None:
-                # 对抗的得分
+                # 锟皆匡拷锟侥得凤拷
                 logits_quality_adv = 1 * logits_quality_adv[:, 0] + 2 * logits_quality_adv[:, 1] + 3 * logits_quality_adv[:, 2] + \
                         4 * logits_quality_adv[:, 3] + 5 * logits_quality_adv[:, 4]
                 logits_quality_adv = ((logits_quality_adv -1) / 4) *5

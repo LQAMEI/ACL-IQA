@@ -11,12 +11,12 @@ def model_index(models, filenames):
     matched_indices = []
 
     for filename in filenames:
-        # 使用正则表达式匹配并提取文件名中的变化部分
-        match = re.match(r"(.+?)_(\d+)\.jpg$", filename) #如midjourney_lowstep_000.jpg
+        
+        match = re.match(r"(.+?)_(\d+)\.jpg$", filename) 
         if match:
             base_name = match.group(1)
-            # 使用列表推导式和 startswith 方法进行前缀匹配
-            # matched_index = [i for i, prefix in enumerate(models) if base_name == prefix]
+            
+            
             index = models[base_name]
             matched_indices.append(index)
         else:
@@ -33,11 +33,11 @@ def model_index_after(models, filenames, exclude_index):
         'xl2.2_normal'
     ]
     models = models_all[:exclude_index] + models_all[exclude_index+1:]
-    # 形成编号列表
+    
     model_dict = {}
     counter = 0
     for item in models:
-        if isinstance(item, list):  # 检查是否为列表
+        if isinstance(item, list):  
             for sub_item in item:
                 model_dict[sub_item] = counter
         else:
@@ -46,12 +46,12 @@ def model_index_after(models, filenames, exclude_index):
 
     matched_indices = []
     for filename in filenames:
-        # 使用正则表达式匹配并提取文件名中的变化部分
-        match = re.match(r"(.+?)_(\d+)\.jpg$", filename) #如midjourney_lowstep_000.jpg
+        
+        match = re.match(r"(.+?)_(\d+)\.jpg$", filename) 
         if match:
             base_name = match.group(1)
-            # 使用列表推导式和 startswith 方法进行前缀匹配
-            # matched_index = [i for i, prefix in enumerate(models) if base_name == prefix]
+            
+            
             index = model_dict[base_name]
             matched_indices.append(index)
         else:

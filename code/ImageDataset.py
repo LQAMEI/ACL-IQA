@@ -46,11 +46,6 @@ class AIGCDataset(Dataset):
             img_dir (string): Directory of the images.
             transform (callable, optional): transform to be applied on a sample.
         """
-        # # 读取xlsx文件
-        # self.data = pd.read_excel(csv_file, header=None)
-        # # Print and remove the first row
-        # print(self.data.iloc[0])
-        # self.data = self.data.iloc[1:]
 
         self.data = pd.read_csv(csv_file, sep=',', header=None)
         self.data = self.data.iloc[1:] #去掉第一行

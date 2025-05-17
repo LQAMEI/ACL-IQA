@@ -189,7 +189,7 @@ def eval(loader, phase, dataset):
 
 
     srcc = scipy.stats.mstats.spearmanr(x=q_mos, y=q_hat)[0]
-    #¼ÆËãPLCC
+    #ï¿½ï¿½ï¿½ï¿½PLCC
     plcc = scipy.stats.pearsonr(x=q_mos, y=q_hat)[0]
 
     print_text = dataset + ':' + phase + ': ' +  'srcc:{:.4f}  plcc{:.4f}'.format(srcc,plcc)
