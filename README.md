@@ -3,11 +3,12 @@
 
 <div>
     <a href='https://github.com/LQAMEI/ACL-IQA?tab=repositories' target='_blank'>Baoliang Chen</a><sup>1</sup>&emsp;
-    <a href='' target='_blank'>Qing Lin</a><sup>1</sup>&emsp;
+    <a href='' target='_blank'>Qing Lin</a><sup>2</sup>&emsp;
     <a href='' target='_blank'>Shijie Mai</a><sup>1</sup>&emsp;
 </div>
 <div>
-    <sup>1</sup>South China Normal University, China&emsp; 
+    <sup>1</sup>South China Normal University, China&emsp;
+    <sup>2</sup>Hong Kong University of Science and Technology (Guangzhou), China&emsp;
 </div>
 <div>
     <em>*denotes Corresponding author</em>
@@ -16,7 +17,7 @@
 <div>
     <h4 align="center">
         • <a href="" target='_blank'>[arXiv]</a> • 
-        <a href="https://maclip-github-io.vercel.app/" target='_blank'>[Project Page]</a> •
+        <a href="https://acliqa-github-io.vercel.app/" target='_blank'>[Project Page]</a> •
     </h4>
 </div>
 
@@ -96,12 +97,7 @@ python train_aigc_aigciqa2023_authenticity.py
 ## :love_you_gesture: Citation
 If you find our work useful for your research, please consider citing the paper:
 ```
-@article{liao2025beyond,
-  title={Beyond Cosine Similarity Magnitude-Aware CLIP for No-Reference Image Quality Assessment},
-  author={Liao, Zhicheng and Wu, Dongxu and Shi, Zhenshan and Mai, Sijie and Zhu, Hanwei and Zhu, Lingyu and Jiang, Yuncheng and Chen, Baoliang},
-  journal={arXiv preprint arXiv:2511.09948},
-  year={2025}
-}
+
 ```
 
 ### Contact
