@@ -82,7 +82,7 @@ python train_aigc_agiqa1k.py
 python train_aigc_agiqa3k_perception.py
 
 # AGIQA-3K-alignment
-python train_aigc_aigciqa2023_align.py
+python train_aigc_agiqa3k_align.py
 
 # AIGCIQA2023-perception
 python train_aigc_aigciqa2023_perception.py
