@@ -13,11 +13,9 @@
 <div>
     <em>*denotes Corresponding author</em>
 </div>
-
 <div>
     <h4 align="center">
-        • <a href="" target='_blank'>[arXiv]</a> • 
-        <a href="https://acliqa-github-io.vercel.app/" target='_blank'>[Project Page]</a> •
+        • <a href="https://acliqa-github-io.vercel.app/" target='_blank'>[Project Page]</a> •
     </h4>
 </div>
 
@@ -92,13 +90,17 @@ python train_aigc_aigciqa2023_align.py
 
 # AIGCIQA2023-authenticity
 python train_aigc_aigciqa2023_authenticity.py
-```
 
-## :love_you_gesture: Citation
-If you find our work useful for your research, please consider citing the paper:
-```
+# cross-dataset prediction
+# AGIQA3K to AIGCIQA2023
+python 3kto2023perc.py
+python 3kto2023align.py
 
+# AIGCIQA2023 to AGIQA3K
+python 2023to3kperc.py
+python 2023to3kalign.py
 ```
 
 ### Contact
 If you have any questions, please feel free to reach out at `2803951059@qq.com, blchen@m.scnu.edu.cn`. 
+
