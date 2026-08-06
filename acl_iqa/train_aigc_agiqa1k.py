@@ -218,8 +218,8 @@ for session in range(0,10):
     best_result = { 'quality': 0.0 ,'srcc': 0.0, 'plcc': 0.0}
     best_epoch = {  'quality': 0}
 
-    aigc_train_csv = os.path.join('../Database/AGIQA-1K', str(session), 'train.csv')
-    aigc_val_csv = os.path.join('../Database/AGIQA-1K', str(session), 'val.csv')
+    aigc_train_csv = os.path.join('../Database/AGIQA-1K', str(session+1), 'train.csv')
+    aigc_val_csv = os.path.join('../Database/AGIQA-1K', str(session+1), 'val.csv')
 
     aigc_set = '../data/AGIQA-1K/file'
     aigc_train_loader = set_dataset_aigc(aigc_train_csv, bs, aigc_set, num_workers, preprocess3, train_patch, False)
