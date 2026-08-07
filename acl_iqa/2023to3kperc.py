@@ -4,7 +4,7 @@ import numpy as np
 from torch.optim import lr_scheduler
 
 from clip_main import model as model_moe
-from clip_main import unimo
+from clip_main import acl_iqa
 
 import random
 from MNL_Loss import loss_m3
@@ -14,12 +14,12 @@ import torch.nn.functional as F
 from itertools import product
 import os
 import tqdm
-import EnhancedCLIPNetworkv3
-from IQAloss import IQALoss
-from IPython import embed
+import iqa_model
 
 
-checkpoint_dir = 'cross/3k2023to3kperp'
+
+
+checkpoint_dir = 'cross/2023to3kperc'
 os.makedirs(checkpoint_dir,exist_ok = True)
 
 qualitys_p = ['badly', 'poorly', 'fairly', 'well', 'perfectly']
@@ -103,18 +103,18 @@ def train(model, best_result, best_epoch):
             gmos = gmos.to(device)
             galign = galign.to(device)
             texts = [f"a photo that {c} matches '{p}'" for p,c in product(prompt, qualitys_p)]
-            input_texts = torch.cat([unimo.tokenize(c,truncate=True) for c in texts]).to(device)  
+            input_texts = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in texts]).to(device)  
             
-            input_texts_se = torch.cat([unimo.tokenize(c,truncate=True) for c in prompt]).to(device)  
+            input_texts_se = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in prompt]).to(device)  
             
             col_texts = [f"In a photo like '{p}', using alignment to assist in evaluating image quality" for p in prompt]
-            input_col_texts = torch.cat([unimo.tokenize(c,truncate=True) for c in col_texts]).to(device)  
+            input_col_texts = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in col_texts]).to(device)  
             
             adv_texts = [f"In a photo like '{p}', excluding consideration of alignment when evaluating image quality" for p in prompt]
-            input_adv_texts = torch.cat([unimo.tokenize(c,truncate=True) for c in adv_texts]).to(device)  
+            input_adv_texts = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in adv_texts]).to(device)  
             
             texts_qual = [f"A photo of {c} quality" for c in qualitys_p1] * len(prompt)
-            input_texts_qual = torch.cat([unimo.tokenize(c,truncate=True) for c in texts_qual]).to(device)  
+            input_texts_qual = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in texts_qual]).to(device)  
             
             optimizer.zero_grad()
             
@@ -217,15 +217,15 @@ def eval(loader, phase, dataset):
         
         
         texts_qual = [f"A photo of {c} quality" for c in qualitys_p1] * len(prompt)
-        input_texts_qual = torch.cat([unimo.tokenize(c,truncate=True) for c in texts_qual]).to(device)  
+        input_texts_qual = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in texts_qual]).to(device)  
 
         col_texts = [f"In a photo like '{p}', using alignment to assist in evaluating image quality" for p in prompt]
-        input_col_texts = torch.cat([unimo.tokenize(c,truncate=True) for c in col_texts]).to(device)  
+        input_col_texts = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in col_texts]).to(device)  
         
         adv_texts = [f"In a photo like '{p}', excluding consideration of alignment when evaluating image quality" for p in prompt]
-        input_adv_texts = torch.cat([unimo.tokenize(c,truncate=True) for c in adv_texts]).to(device)  
+        input_adv_texts = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in adv_texts]).to(device)  
                   
-        input_texts_se = torch.cat([unimo.tokenize(c,truncate=True) for c in prompt]).to(device)  
+        input_texts_se = torch.cat([acl_iqa.tokenize(c,truncate=True) for c in prompt]).to(device)  
 
         
         with torch.no_grad():
@@ -256,7 +256,7 @@ num_workers = 16
 best_result_list = []
 base_logger = get_logger(os.path.join(checkpoint_dir,'train_test.log'), 'log')
 for session in range(0,1):
-    model =  EnhancedCLIPNetworkv3.AC_MoE(topk=3)
+    model = iqa_model.ACLIQA(topk=3)
 
     model.to(device) 
     
