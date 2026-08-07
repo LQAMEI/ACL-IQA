@@ -233,7 +233,7 @@ for session in range(0,10):
         scheduler.step()
         log_and_print(base_logger,'...............current quality best, session:{}...............'.format(session + 1))
         log_and_print(base_logger,'best quality epoch:{}'.format(best_epoch['quality']))
-        log_and_print(base_logger,'best quality result:{}, srcc:{}, plcc{}'.format(best_result['quality'], best_result['srcc'], best_result['plcc']))
+        log_and_print(base_logger,'best quality result:{}, srcc:{}, plcc:{}'.format(best_result['quality'], best_result['srcc'], best_result['plcc']))
 
     best_result_list.append(best_result)
 
