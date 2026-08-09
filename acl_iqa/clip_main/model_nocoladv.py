@@ -234,7 +234,7 @@ class SparseDispatcher(object):
         inp_exp = inp[self._batch_index].squeeze(1)  
         return torch.split(inp_exp, self._part_sizes, dim=0)  
 
-    def combine(self, expert_out, multiply_by_gates=True):
+    def combine(self, expert_out, multiply_by_gates=False):
         stitched = torch.cat(expert_out, 0).exp()
 
         if multiply_by_gates:
