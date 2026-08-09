@@ -234,13 +234,7 @@ class SparseDispatcher(object):
         inp_exp = inp[self._batch_index].squeeze(1)  
         return torch.split(inp_exp, self._part_sizes, dim=0)  
 
-    def combine(self, expert_out, multiply_by_gates=True):
-        """Sum together the expert output, weighted by the gates.
-        The slice corresponding to a particular batch element `b` is computed
-        as the sum over all experts `i` of the expert output, weighted by the
-        corresponding gate values.  If `multiply_by_gates` is set to False, the
-        gate values are ignored."""
-
+    def combine(self, expert_out, multiply_by_gates=False):
         stitched = torch.cat(expert_out, 0).exp()
 
         if multiply_by_gates:
